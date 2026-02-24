@@ -29,7 +29,8 @@
         }
         .topbar .title { font-family: system-ui, sans-serif; font-size: 0.9rem; font-weight: 500; }
         .topbar .subtitle { font-family: system-ui, sans-serif; font-size: 0.75rem; color: #a0a0b0; }
-        .syllabus-btn {
+        .topbar-links { display: flex; gap: 10px; align-items: center; }
+        .topbar-btn {
             background: rgba(255,255,255,0.1);
             color: white;
             border: none;
@@ -40,8 +41,14 @@
             font-size: 0.85rem;
             text-decoration: none;
             transition: background 0.2s;
+            white-space: nowrap;
         }
-        .syllabus-btn:hover { background: rgba(255,255,255,0.2); }
+        .topbar-btn:hover { background: rgba(255,255,255,0.2); }
+        .topbar-btn.projects {
+            background: rgba(16, 185, 129, 0.25);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+        }
+        .topbar-btn.projects:hover { background: rgba(16, 185, 129, 0.4); }
         
         .container { max-width: 1200px; margin: 0 auto; padding: 60px 40px 100px; }
         
@@ -83,6 +90,60 @@
             font-size: 1.1rem;
             color: #444;
         }
+
+        /* Projects Banner */
+        .projects-banner {
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+            border: 1px solid #86efac;
+            border-left: 5px solid #16a34a;
+            border-radius: 0 12px 12px 0;
+            padding: 24px 32px;
+            margin: 0 0 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .projects-banner-left { flex: 1; min-width: 200px; }
+        .projects-banner-label {
+            font-family: system-ui, sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #16a34a;
+            margin-bottom: 6px;
+        }
+        .projects-banner h3 {
+            font-family: system-ui, sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 6px;
+        }
+        .projects-banner p {
+            font-size: 0.95rem;
+            color: #555;
+            font-family: system-ui, sans-serif;
+            line-height: 1.5;
+        }
+        .projects-banner-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #16a34a;
+            color: white;
+            padding: 12px 26px;
+            border-radius: 8px;
+            font-family: system-ui, sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: background 0.2s, transform 0.1s;
+        }
+        .projects-banner-btn:hover { background: #15803d; transform: translateY(-1px); }
         
         /* Info Cards Grid */
         .info-grid {
@@ -109,9 +170,7 @@
             align-items: center;
             gap: 10px;
         }
-        .info-card h3 .icon {
-            font-size: 1.3rem;
-        }
+        .info-card h3 .icon { font-size: 1.3rem; }
         .info-card ul {
             margin: 0;
             padding-left: 0;
@@ -130,13 +189,9 @@
             position: absolute;
             left: -10px;
         }
-        .info-card.workflow {
-            border-left-color: #8b5cf6;
-        }
+        .info-card.workflow { border-left-color: #8b5cf6; }
         .info-card.workflow li::before { color: #8b5cf6; }
-        .info-card.warning {
-            border-left-color: #f59e0b;
-        }
+        .info-card.warning { border-left-color: #f59e0b; }
         .info-card.warning h3 { color: #b45309; }
         .info-card.warning li::before { color: #f59e0b; }
         
@@ -167,7 +222,6 @@
         @media (max-width: 1024px) {
             .week-grid { grid-template-columns: repeat(2, 1fr); }
         }
-        
         @media (max-width: 640px) {
             .week-grid { grid-template-columns: 1fr; }
         }
@@ -187,14 +241,12 @@
             box-shadow: 0 4px 15px rgba(16, 185, 129, 0.15);
             transform: translateY(-3px);
         }
-        
         .week-card-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 12px;
         }
-        
         .week-badge {
             font-family: system-ui, sans-serif;
             background: rgba(16, 185, 129, 0.1);
@@ -210,7 +262,6 @@
             background: rgba(245, 158, 11, 0.1);
             color: #b45309;
         }
-        
         .status-badge {
             font-family: system-ui, sans-serif;
             padding: 5px 12px;
@@ -219,7 +270,7 @@
             font-weight: 600;
             text-transform: uppercase;
         }
-        .status-badge.open { background: rgba(34, 197, 94, 0.15); color: #16a34a; }
+        .status-badge.open   { background: rgba(34, 197, 94, 0.15); color: #16a34a; }
         .status-badge.upcoming { background: rgba(59, 130, 246, 0.1); color: #2563eb; }
         .status-badge.closed { background: rgba(0, 0, 0, 0.05); color: #888; }
         
@@ -235,7 +286,6 @@
             margin-bottom: 15px;
             text-align: left;
         }
-        
         .week-card-footer {
             display: flex;
             justify-content: space-between;
@@ -246,18 +296,11 @@
             font-size: 0.85rem;
             color: #888;
         }
-        .arrow {
-            color: #10b981;
-            font-size: 1.2rem;
-            font-weight: bold;
-        }
-        
         .week-card-actions {
             display: flex;
             gap: 8px;
             padding-top: 10px;
         }
-        
         .week-card-actions a {
             display: inline-flex;
             align-items: center;
@@ -270,15 +313,8 @@
             text-decoration: none;
             transition: all 0.2s;
         }
-        
-        .btn-colab {
-            background: #f9ab00;
-            color: #1a1a1a;
-        }
-        
-        .btn-colab:hover {
-            background: #e09900;
-        }
+        .btn-colab { background: #f9ab00; color: #1a1a1a; }
+        .btn-colab:hover { background: #e09900; }
         
         .break-card {
             background: #fffbeb;
@@ -308,17 +344,15 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        .footer p { 
-            margin: 8px 0; 
-            font-size: 1rem;
-            color: #e0e0e0;
-        }
+        .footer p { margin: 8px 0; font-size: 1rem; color: #e0e0e0; }
         .footer strong { color: #10b981; }
         
         @media (max-width: 768px) {
             .container { padding: 30px 20px; }
             .hero h1 { font-size: 2.2rem; }
             .info-grid { grid-template-columns: 1fr; }
+            .projects-banner { flex-direction: column; align-items: flex-start; }
+            .topbar { padding: 12px 16px; }
         }
     </style>
 </head>
@@ -328,7 +362,10 @@
             <span class="title">Data Structures & Algorithms</span>
             <div class="subtitle">DSA • Spring 2026</div>
         </div>
-        <a href="syllabus.html" class="syllabus-btn">📋 Syllabus</a>
+        <div class="topbar-links">
+            <a href="project/" class="topbar-btn projects">🛠️ Projects</a>
+            <a href="syllabus.html" class="topbar-btn">📋 Syllabus</a>
+        </div>
     </nav>
 
     <main class="container">
@@ -341,6 +378,16 @@
         
         <!-- Welcome Text -->
         <p class="welcome">Welcome to Data Structures & Algorithms! This course covers fundamental computer science concepts through hands-on Python programming. Each week's content includes explanations, interactive code examples you can run directly in your browser, and exercises to practice.</p>
+
+        <!-- Projects Banner -->
+        <div class="projects-banner">
+            <div class="projects-banner-left">
+                <div class="projects-banner-label">Weekly Graded Work</div>
+                <h3>🛠️ Engineering Projects</h3>
+                <p>One personalised project per week — each grounded in a real mechatronics scenario. Open in Google Colab, enter your student ID, run all cells, and submit before the deadline.</p>
+            </div>
+            <a href="project/" class="projects-banner-btn">View All Projects →</a>
+        </div>
         
         <!-- Info Cards -->
         <div class="info-grid">
@@ -392,25 +439,25 @@
 
     <script>
     const weeks = [
-        { week: 1, topic: "Foundations & Big O", desc: "Algorithm analysis, time & space complexity, Big O notation, amortized analysis", file: "Week_01.html", start: "2026-02-09", end: "2026-02-13" },
-        { week: 2, topic: "Recursion & Math Foundations", desc: "Recursive thinking, base cases, mathematical foundations", file: "Week_02.html", start: "2026-02-16", end: "2026-02-20" },
-        { week: 3, topic: "Arrays, Lists & Strings", desc: "Array operations, list manipulation, string algorithms, KMP pattern matching", file: "Week_03.html", start: "2026-02-23", end: "2026-02-27" },
-        { week: 4, topic: "Linked Lists", desc: "Singly & doubly linked lists, operations, applications", file: "Week_04.html", start: "2026-03-02", end: "2026-03-06" },
-        { week: 5, topic: "Stacks & Queues", desc: "LIFO & FIFO structures, implementations, use cases", file: "Week_05.html", start: "2026-03-09", end: "2026-03-13" },
-        { week: 6, topic: "Trees & Binary Search Trees", desc: "Tree traversals, BST operations, balanced trees", file: "Week_06.html", start: "2026-03-16", end: "2026-03-20" },
-        { week: 7, topic: "Heaps & Priority Queues", desc: "Min/max heaps, heapify, priority queue applications", file: "Week_07.html", start: "2026-03-23", end: "2026-03-27" },
-        { week: 8, topic: "Hash Tables", desc: "Hashing, collision resolution, hash map implementation", file: "Week_08.html", start: "2026-03-30", end: "2026-04-03" },
-        { week: "break", topic: "Spring Break", desc: "No classes or submissions during this period", start: "2026-04-06", end: "2026-04-18" },
-        { week: 9, topic: "Graphs", desc: "Graph representations, BFS, DFS, traversal algorithms", file: "Week_09.html", start: "2026-04-20", end: "2026-04-24" },
-        { week: 10, topic: "Sorting Algorithms", desc: "Bubble, selection, insertion, merge, quick sort", file: "Week_10.html", start: "2026-04-27", end: "2026-05-01" },
-        { week: 11, topic: "Searching Algorithms", desc: "Linear, binary search, search in trees & graphs", file: "Week_11.html", start: "2026-05-04", end: "2026-05-08" },
-        { week: 12, topic: "Dynamic Programming", desc: "Memoization, tabulation, classic DP problems", file: "Week_12.html", start: "2026-05-11", end: "2026-05-15" },
-        { week: 13, topic: "Greedy Algorithms", desc: "Greedy approach, optimal substructure, applications", file: "Week_13.html", start: "2026-05-18", end: "2026-05-22" },
-        { week: 14, topic: "Course Review & Final Practice", desc: "Comprehensive review, practice problems, exam prep", file: "Week_14.html", start: "2026-06-01", end: "2026-06-05" }
+        { week: 1,  topic: "Foundations & Big O",            desc: "Algorithm analysis, time & space complexity, Big O notation, amortized analysis",    file: "Week_01.html", start: "2026-02-09", end: "2026-02-13" },
+        { week: 2,  topic: "Recursion & Math Foundations",    desc: "Recursive thinking, base cases, mathematical foundations",                           file: "Week_02.html", start: "2026-02-16", end: "2026-02-20" },
+        { week: 3,  topic: "Arrays, Lists & Strings",         desc: "Array operations, list manipulation, string algorithms, KMP pattern matching",        file: "Week_03.html", start: "2026-02-23", end: "2026-02-27" },
+        { week: 4,  topic: "Linked Lists",                    desc: "Singly & doubly linked lists, operations, applications",                              file: "Week_04.html", start: "2026-03-02", end: "2026-03-06" },
+        { week: 5,  topic: "Stacks & Queues",                 desc: "LIFO & FIFO structures, implementations, use cases",                                  file: "Week_05.html", start: "2026-03-09", end: "2026-03-13" },
+        { week: 6,  topic: "Trees & Binary Search Trees",     desc: "Tree traversals, BST operations, balanced trees",                                     file: "Week_06.html", start: "2026-03-16", end: "2026-03-20" },
+        { week: 7,  topic: "Heaps & Priority Queues",         desc: "Min/max heaps, heapify, priority queue applications",                                 file: "Week_07.html", start: "2026-03-23", end: "2026-03-27" },
+        { week: 8,  topic: "Hash Tables",                     desc: "Hashing, collision resolution, hash map implementation",                              file: "Week_08.html", start: "2026-03-30", end: "2026-04-03" },
+        { week: "break", topic: "Spring Break",               desc: "No classes or submissions during this period",                                        start: "2026-04-06", end: "2026-04-18" },
+        { week: 9,  topic: "Graphs",                          desc: "Graph representations, BFS, DFS, traversal algorithms",                               file: "Week_09.html", start: "2026-04-20", end: "2026-04-24" },
+        { week: 10, topic: "Sorting Algorithms",              desc: "Bubble, selection, insertion, merge, quick sort",                                     file: "Week_10.html", start: "2026-04-27", end: "2026-05-01" },
+        { week: 11, topic: "Searching Algorithms",            desc: "Linear, binary search, search in trees & graphs",                                     file: "Week_11.html", start: "2026-05-04", end: "2026-05-08" },
+        { week: 12, topic: "Dynamic Programming",             desc: "Memoization, tabulation, classic DP problems",                                        file: "Week_12.html", start: "2026-05-11", end: "2026-05-15" },
+        { week: 13, topic: "Greedy Algorithms",               desc: "Greedy approach, optimal substructure, applications",                                 file: "Week_13.html", start: "2026-05-18", end: "2026-05-22" },
+        { week: 14, topic: "Course Review & Final Practice",  desc: "Comprehensive review, practice problems, exam prep",                                  file: "Week_14.html", start: "2026-06-01", end: "2026-06-05" }
     ];
 
     function formatDate(dateStr) {
-        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
         const d = new Date(dateStr);
         return months[d.getMonth()] + ' ' + d.getDate();
     }
@@ -418,8 +465,7 @@
     function getStatus(start, end) {
         const now = new Date();
         const s = new Date(start);
-        const e = new Date(end);
-        e.setHours(23, 59, 59);
+        const e = new Date(end); e.setHours(23, 59, 59);
         if (now < s) return 'upcoming';
         if (now > e) return 'closed';
         return 'open';
@@ -431,10 +477,8 @@
 
     function buildWeekCards() {
         const grid = document.getElementById('weekGrid');
-        
         weeks.forEach(item => {
             const status = getStatus(item.start, item.end);
-            
             if (item.week === 'break') {
                 const card = document.createElement('div');
                 card.className = 'week-card break-card';
@@ -446,8 +490,7 @@
                     <p>${item.desc}</p>
                     <div class="week-card-footer">
                         <span>${formatDate(item.start)} – ${formatDate(item.end)}</span>
-                    </div>
-                `;
+                    </div>`;
                 grid.appendChild(card);
             } else {
                 const card = document.createElement('div');
@@ -466,13 +509,12 @@
                     </div>
                     <div class="week-card-actions">
                         <a href="${colabUrl}" target="_blank" class="btn-colab">🟡 Open in Colab</a>
-                    </div>
-                `;
+                    </div>`;
                 grid.appendChild(card);
             }
         });
     }
-    
+
     buildWeekCards();
     </script>
 
@@ -480,41 +522,32 @@
     // Auto-redirect to current week's Colab notebook (only on first visit)
     function getCurrentWeekColab() {
         const now = new Date();
-        
         for (const item of weeks) {
             if (item.week === 'break') continue;
-            
             const start = new Date(item.start + 'T00:00:00');
-            const end = new Date(item.end + 'T23:59:59');
-            
+            const end   = new Date(item.end   + 'T23:59:59');
             if (now >= start && now <= end) {
                 const weekNum = String(item.week).padStart(2, '0');
                 return {
-                    url: `https://colab.research.google.com/github/ArifSolmaz/dsa/blob/main/notebooks/Week_${weekNum}.ipynb`,
+                    url:   `https://colab.research.google.com/github/ArifSolmaz/dsa/blob/main/notebooks/Week_${weekNum}.ipynb`,
                     label: `Week ${item.week}: ${item.topic}`
                 };
             }
         }
         return null;
     }
-    
-    // Check conditions
-    const urlParams = new URLSearchParams(window.location.search);
-    const noRedirect = urlParams.get('home') === 'true';
-    const hasVisited = sessionStorage.getItem('dsa_visited');
+
+    const urlParams   = new URLSearchParams(window.location.search);
+    const noRedirect  = urlParams.get('home') === 'true';
+    const hasVisited  = sessionStorage.getItem('dsa_visited');
     const cameFromWeek = document.referrer.includes('Week');
-    
-    // Only redirect if: first visit AND no ?home=true AND didn't come from a week page
+
     if (!noRedirect && !hasVisited && !cameFromWeek) {
         const current = getCurrentWeekColab();
         if (current) {
             sessionStorage.setItem('dsa_visited', 'true');
-            
-            // Create overlay backdrop
             const overlay = document.createElement('div');
             overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:9998;';
-            
-            // Create message popup
             const msg = document.createElement('div');
             msg.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#1a1a2e;color:white;padding:30px 50px;border-radius:10px;font-family:system-ui;text-align:center;z-index:9999;box-shadow:0 10px 40px rgba(0,0,0,0.3);max-width:90vw;';
             msg.innerHTML = '<div style="font-size:1.2rem;margin-bottom:10px;">Opening this week\'s notebook in Colab...</div>'
@@ -522,35 +555,18 @@
                 + '<div style="font-size:0.8rem;color:#888;">Press <kbd style="background:rgba(255,255,255,0.15);padding:2px 8px;border-radius:4px;font-family:system-ui;">Esc</kbd> or click outside to stay on this page</div>';
             document.body.appendChild(overlay);
             document.body.appendChild(msg);
-            
-            // Set redirect timeout
-            const redirectTimer = setTimeout(function() {
-                window.location.href = current.url;
-            }, 4000);
-            
-            // Cancel redirect and remove popup
+            const redirectTimer = setTimeout(() => { window.location.href = current.url; }, 4000);
             function cancelRedirect() {
                 clearTimeout(redirectTimer);
                 if (msg.parentNode) msg.remove();
                 if (overlay.parentNode) overlay.remove();
                 document.removeEventListener('keydown', onKeyDown);
             }
-            
-            // Esc key cancels
-            function onKeyDown(e) {
-                if (e.key === 'Escape') {
-                    e.preventDefault();
-                    cancelRedirect();
-                }
-            }
+            function onKeyDown(e) { if (e.key === 'Escape') { e.preventDefault(); cancelRedirect(); } }
             document.addEventListener('keydown', onKeyDown);
-            
-            // Clicking overlay cancels
             overlay.addEventListener('click', cancelRedirect);
         }
     }
-    
-    // Mark as visited when viewing homepage
     sessionStorage.setItem('dsa_visited', 'true');
     </script>
 </body>
