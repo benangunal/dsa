@@ -1,3 +1,4 @@
 ﻿.quiz_key
 quiz/drafts/
 quiz/*_ANSWERS*
+.DS_Store
