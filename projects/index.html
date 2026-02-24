@@ -28,12 +28,14 @@
     body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.6; }
     body::before {
       content: ''; position: fixed; inset: 0;
-      background-image: linear-gradient(rgba(240,136,62,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(240,136,62,.025) 1px, transparent 1px);
+      background-image:
+        linear-gradient(rgba(240,136,62,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(240,136,62,.025) 1px, transparent 1px);
       background-size: 40px 40px; pointer-events: none; z-index: 0;
     }
     .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
 
-    /* nav */
+    /* ── nav ── */
     nav { border-bottom: 1px solid var(--border); padding: 14px 0; }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; max-width: 860px; margin: 0 auto; padding: 0 24px; }
     .nav-brand { font-family: var(--mono); font-size: 13px; color: var(--muted); text-decoration: none; letter-spacing:.04em; }
@@ -43,35 +45,46 @@
     .nav-links a:hover { color: var(--text); }
     .nav-links a.active { color: var(--accent); }
 
-    /* hero */
+    /* ── hero ── */
     header { padding: 52px 0 36px; border-bottom: 1px solid var(--border); }
     .header-tag { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing:.12em; text-transform: uppercase; margin-bottom: 14px; }
     header h1 { font-size: clamp(26px,5vw,40px); font-weight: 800; line-height: 1.1; letter-spacing:-.02em; margin-bottom: 14px; }
     header h1 em { font-style: normal; color: var(--accent); }
     header p { color: var(--dim); max-width: 580px; font-size: 14px; line-height: 1.7; }
 
-    /* flow box */
+    /* ── rhythm box ── */
     .flow-box { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 8px; padding: 20px 24px; margin: 32px 0 44px; }
-    .flow-box h3 { font-size: 11px; font-weight: 700; color: var(--accent); font-family: var(--mono); letter-spacing:.08em; text-transform: uppercase; margin-bottom: 10px; }
-    .flow-box p { font-size: 13px; color: var(--dim); line-height: 1.65; margin-bottom: 16px; }
-    .flow-steps { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
-    .fs { font-family: var(--mono); font-size: 11px; padding: 4px 10px; border-radius: 4px; font-weight: 600; white-space: nowrap; }
-    .fs.n  { background: rgba(88,166,255,.12);  color: var(--blue); }
-    .fs.p  { background: rgba(240,136,62,.12);  color: var(--accent); }
-    .fs.d  { background: rgba(248,81,73,.12);   color: var(--red); }
-    .fs.pr { background: rgba(188,140,255,.12); color: var(--purple); }
-    .fs.arr { color: var(--muted); font-size: 14px; }
+    .flow-box h3 { font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing:.08em; text-transform: uppercase; margin-bottom: 16px; }
+    .flow-row { display: flex; gap: 0; align-items: stretch; flex-wrap: wrap; }
+    .flow-step {
+      flex: 1; min-width: 150px;
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 8px; padding: 14px 16px;
+      position: relative;
+    }
+    .flow-step + .flow-step { margin-left: 8px; }
+    .flow-step-num { font-family: var(--mono); font-size: 10px; color: var(--muted); margin-bottom: 6px; letter-spacing:.06em; }
+    .flow-step-label { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+    .flow-step-desc { font-size: 12px; color: var(--muted); line-height: 1.4; }
+    .flow-step.s1 { border-top: 2px solid var(--blue); }
+    .flow-step.s2 { border-top: 2px solid var(--accent); }
+    .flow-step.s3 { border-top: 2px solid var(--green); }
+    .flow-step.s4 { border-top: 2px solid var(--purple); }
+    .flow-step-num.c1 { color: var(--blue); }
+    .flow-step-num.c2 { color: var(--accent); }
+    .flow-step-num.c3 { color: var(--green); }
+    .flow-step-num.c4 { color: var(--purple); }
 
-    /* section label */
+    /* ── section label ── */
     .section-label { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing:.1em; text-transform: uppercase; display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
     .section-label::after { content:''; flex:1; height:1px; background: var(--border); }
 
-    /* break banner */
-    .break-banner { display: flex; align-items: center; gap: 14px; background: rgba(210,153,34,.07); border: 1px solid rgba(210,153,34,.25); border-radius: 8px; padding: 14px 20px; margin: 12px 0; }
+    /* ── break banner ── */
+    .break-banner { display: flex; align-items: center; gap: 14px; background: rgba(210,153,34,.07); border: 1px solid rgba(210,153,34,.2); border-radius: 8px; padding: 14px 18px; margin: 12px 0; }
     .break-banner p { font-family: var(--mono); font-size: 12px; color: var(--yellow); line-height: 1.5; }
     .break-banner p strong { display: block; font-size: 13px; margin-bottom: 2px; }
 
-    /* cards */
+    /* ── cards ── */
     .projects { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
     .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; transition: border-color .2s; position: relative; }
     .card::before { content:''; position: absolute; left:0; top:0; bottom:0; width: 3px; }
@@ -80,34 +93,42 @@
     .card.s-past::before     { background: var(--muted); opacity:.25; }
     .card.s-active:hover     { border-color: #30363d; }
     .card.s-past .card-body  { display: none; }
-    .card.s-past             { opacity: .55; }
+    .card.s-past             { opacity: .5; }
 
-    .card-header { padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-    .card-left { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0; }
+    .card-header { padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .card-left  { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0; }
+    .card-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
     .week-num { font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--muted); background: rgba(255,255,255,.05); padding: 3px 8px; border-radius: 4px; white-space: nowrap; flex-shrink: 0; }
-    .card-title { font-size: 15px; font-weight: 700; letter-spacing:-.01em; }
+    .card-title { font-size: 15px; font-weight: 700; letter-spacing:-.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .card-title .ico { margin-right: 6px; }
-    .card-right { display: flex; align-items: flex-end; flex-direction: column; gap: 5px; flex-shrink: 0; }
+
     .status-pill { font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing:.07em; text-transform: uppercase; padding: 3px 9px; border-radius: 20px; white-space: nowrap; }
     .status-pill.active   { background: rgba(63,185,80,.12);  color: var(--green); }
     .status-pill.upcoming { background: rgba(139,148,158,.08); color: var(--muted); }
     .status-pill.last     { background: rgba(248,81,73,.1);   color: var(--red); }
-    .status-pill.past     { background: transparent; color: var(--muted); }
-    .deadline { font-family: var(--mono); font-size: 11px; text-align: right; line-height: 1.5; }
-    .deadline.open   { color: var(--dim); }
-    .deadline.open .dl-submit { color: var(--green); }
-    .deadline.open .dl-present { color: var(--purple); }
-    .deadline.future { color: var(--muted); }
-    .deadline.future .dl-submit  { color: var(--muted); }
-    .deadline.future .dl-present { color: var(--muted); opacity: .6; }
-    .deadline.final  { color: var(--red); font-weight: 700; }
-    .deadline.closed { color: var(--muted); opacity:.45; }
+    .status-pill.past     { background: transparent;           color: var(--muted); }
 
-    .card-body { padding: 0 20px 18px; border-top: 1px solid var(--border); }
+    .deadline { font-family: var(--mono); font-size: 11px; white-space: nowrap; }
+    .deadline.open   { color: var(--green); }
+    .deadline.future { color: var(--muted); }
+    .deadline.final  { color: var(--red); font-weight: 700; }
+    .deadline.closed { color: var(--muted); opacity:.4; }
+
+    /* ── card body ── */
+    .card-body { padding: 0 20px 20px; border-top: 1px solid var(--border); }
     .card-desc { font-size: 13px; color: var(--dim); line-height: 1.65; padding-top: 14px; margin-bottom: 14px; }
     .topics { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
     .tag { font-family: var(--mono); font-size: 11px; padding: 2px 8px; border-radius: 4px; background: rgba(88,166,255,.07); color: var(--blue); border: 1px solid rgba(88,166,255,.12); }
 
+    /* ── presentation notice ── */
+    .present-note {
+      display: flex; align-items: center; gap: 10px;
+      background: rgba(188,140,255,.07); border: 1px solid rgba(188,140,255,.18);
+      border-radius: 6px; padding: 10px 14px; margin-bottom: 16px;
+      font-family: var(--mono); font-size: 12px; color: var(--purple);
+    }
+
+    /* ── sub-project grid ── */
     .sub-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(185px,1fr)); gap: 8px; margin-bottom: 16px; }
     .sub { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 11px 13px; }
     .sub-num { font-family: var(--mono); font-size: 10px; color: var(--muted); margin-bottom: 3px; }
@@ -118,41 +139,36 @@
     .diff.medium { color: var(--accent); }
     .diff.hard   { color: var(--red); }
 
+    /* ── buttons ── */
     .btns { display: flex; flex-wrap: wrap; gap: 7px; }
-    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 7px 13px; border-radius: 6px; font-size: 12px; font-weight: 700; font-family: var(--mono); text-decoration: none; border: none; cursor: pointer; transition: opacity .15s, transform .1s; white-space: nowrap; }
-    .btn:hover { opacity: .82; transform: translateY(-1px); }
-    .btn-colab { background: #f9ab00; color: #000; }
-    .btn-ghost { background: rgba(255,255,255,.05); color: var(--dim); border: 1px solid var(--border); }
-    .btn-off   { background: rgba(255,255,255,.03); color: var(--muted); border: 1px solid var(--border); opacity:.4; pointer-events:none; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 6px; font-size: 12px; font-weight: 700; font-family: var(--mono); text-decoration: none; border: none; cursor: pointer; transition: opacity .15s, transform .1s; white-space: nowrap; }
+    .btn:hover { opacity:.82; transform: translateY(-1px); }
+    .btn-dl    { background: rgba(63,185,80,.12);  color: var(--green); border: 1px solid rgba(63,185,80,.25); }
+    .btn-ghost { background: rgba(255,255,255,.05); color: var(--dim);   border: 1px solid var(--border); }
+    .btn-off   { background: rgba(255,255,255,.03); color: var(--muted); border: 1px solid var(--border); opacity:.4; pointer-events:none; cursor:default; }
 
-    /* past toggle */
-    .past-toggle { font-family: var(--mono); font-size: 12px; color: var(--muted); cursor: pointer; display: flex; align-items: center; gap: 6px; padding: 8px 0; margin-bottom: 8px; border: none; background: none; transition: color .2s; }
+    /* ── past toggle ── */
+    .past-toggle { font-family: var(--mono); font-size: 12px; color: var(--muted); cursor: pointer; display: inline-flex; align-items: center; gap: 6px; padding: 8px 0; margin-bottom: 8px; border: none; background: none; transition: color .2s; }
     .past-toggle:hover { color: var(--text); }
 
-    /* how-to */
+    /* ── how to ── */
     .howto { border: 1px solid var(--border); border-radius: 10px; padding: 26px; margin: 12px 0 56px; background: var(--surface); }
     .howto h2 { font-size: 15px; font-weight: 700; margin-bottom: 20px; }
     .steps { display: flex; flex-direction: column; gap: 0; }
-    .step { display: flex; gap: 0; align-items: stretch; }
-    .step-left { display: flex; flex-direction: column; align-items: center; margin-right: 16px; }
-    .sn { width: 28px; height: 28px; flex-shrink: 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 11px; font-weight: 700; }
-    .sn.blue   { background: rgba(88,166,255,.12);  border: 1px solid rgba(88,166,255,.25);  color: var(--blue); }
-    .sn.orange { background: rgba(240,136,62,.12);  border: 1px solid rgba(240,136,62,.25);  color: var(--accent); }
-    .sn.red    { background: rgba(248,81,73,.12);   border: 1px solid rgba(248,81,73,.25);   color: var(--red); }
-    .sn.purple { background: rgba(188,140,255,.12); border: 1px solid rgba(188,140,255,.25); color: var(--purple); }
-    .sn.green  { background: rgba(63,185,80,.12);   border: 1px solid rgba(63,185,80,.25);   color: var(--green); }
-    .step-line { width: 1px; flex: 1; background: var(--border); margin: 4px 0; min-height: 16px; }
-    .step:last-child .step-line { display: none; }
-    .sb { padding-bottom: 22px; flex: 1; }
-    .sb strong { font-size: 14px; display: block; margin-bottom: 3px; padding-top: 4px; }
-    .sb p { font-size: 13px; color: var(--muted); line-height: 1.55; }
+    .step { display: flex; gap: 0; position: relative; }
+    .step:not(:last-child) .step-line { position: absolute; left: 12px; top: 36px; bottom: 0; width: 1px; background: var(--border); }
+    .step-left { display: flex; flex-direction: column; align-items: center; padding-right: 18px; flex-shrink: 0; padding-top: 2px; }
+    .sn { width: 26px; height: 26px; flex-shrink: 0; background: rgba(240,136,62,.1); border: 1px solid rgba(240,136,62,.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--accent); z-index: 1; }
+    .step-body { padding-bottom: 22px; flex: 1; }
+    .step-body strong { font-size: 14px; display: block; margin-bottom: 3px; }
+    .step-body p { font-size: 13px; color: var(--muted); line-height: 1.55; }
     code { font-family: var(--mono); font-size: 11px; background: rgba(255,255,255,.06); padding: 1px 5px; border-radius: 3px; color: var(--blue); }
+    .step-body .pill { display: inline-block; font-family: var(--mono); font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 4px; }
+    .pill.bb  { background: rgba(248,81,73,.12); color: var(--red); }
+    .pill.prs { background: rgba(188,140,255,.12); color: var(--purple); }
+    .pill.ai  { background: rgba(240,136,62,.12); color: var(--accent); }
 
-    /* ai note */
-    .ai-note { background: rgba(240,136,62,.06); border: 1px solid rgba(240,136,62,.2); border-radius: 8px; padding: 14px 18px; margin-top: 20px; }
-    .ai-note p { font-size: 13px; color: var(--dim); line-height: 1.6; }
-    .ai-note p strong { color: var(--accent); }
-
+    /* ── footer ── */
     footer { border-top: 1px solid var(--border); padding: 22px 0; }
     .footer-inner { max-width: 860px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
     .footer-inner p { font-size: 12px; color: var(--muted); font-family: var(--mono); }
@@ -161,13 +177,16 @@
 
     @media (max-width: 600px) {
       .nav-links { display: none; }
+      .card-header { flex-wrap: wrap; }
       .sub-grid { grid-template-columns: 1fr 1fr; }
-      .card-right { align-items: flex-start; }
+      .flow-row { flex-direction: column; }
+      .flow-step + .flow-step { margin-left: 0; margin-top: 8px; }
     }
   </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <div class="nav-inner">
     <a href="/dsa/" class="nav-brand"><span>DSA</span> · Mechatronics Engineering</a>
@@ -181,24 +200,38 @@
 </nav>
 
 <div class="wrap">
+
+  <!-- HERO -->
   <header>
     <div class="header-tag">// weekly engineering projects</div>
     <h1>In-Class <em>Projects</em></h1>
-    <p>One project per week — built on that week's data structures topic, framed as a real mechatronics engineering task. Work on it at home after class, submit the notebook via Blackboard before the deadline, then present your solution live in the next class session.</p>
+    <p>One project per week — each grounded in that week's data structures topic and framed as a real mechatronics engineering task. Download the notebook, work at home, submit on Blackboard by the deadline, then present your solution live in the next class session.</p>
   </header>
 
-  <!-- FLOW BOX -->
-  <div class="flow-box">
+  <!-- RHYTHM BOX -->
+  <div class="flow-box" style="margin-top:32px; margin-bottom:44px;">
     <h3>Weekly rhythm</h3>
-    <p>You study the new week's notes during class. After class, you work on <em>last week's</em> project independently. Submit your completed notebook via <strong>Blackboard</strong> by the deadline, then come prepared to walk through your solution live in front of the class on the presentation day.</p>
-    <div class="flow-steps">
-      <span class="fs n">Week N — notes in class</span>
-      <span class="fs arr">→</span>
-      <span class="fs p">Week N−1 project at home</span>
-      <span class="fs arr">→</span>
-      <span class="fs d">Submit via Blackboard</span>
-      <span class="fs arr">→</span>
-      <span class="fs pr">Present live next class</span>
+    <div class="flow-row">
+      <div class="flow-step s1">
+        <div class="flow-step-num c1">01 · IN CLASS</div>
+        <div class="flow-step-label">Study new topic</div>
+        <div class="flow-step-desc">Week N lecture & notes</div>
+      </div>
+      <div class="flow-step s2">
+        <div class="flow-step-num c2">02 · AT HOME</div>
+        <div class="flow-step-label">Work on project</div>
+        <div class="flow-step-desc">Week N−1 notebook, own pace</div>
+      </div>
+      <div class="flow-step s3">
+        <div class="flow-step-num c3">03 · BLACKBOARD</div>
+        <div class="flow-step-label">Submit .ipynb</div>
+        <div class="flow-step-desc">Before the deadline shown</div>
+      </div>
+      <div class="flow-step s4">
+        <div class="flow-step-num c4">04 · NEXT CLASS</div>
+        <div class="flow-step-label">Live presentation</div>
+        <div class="flow-step-desc">Day after deadline, in class</div>
+      </div>
     </div>
   </div>
 
@@ -223,51 +256,67 @@
     </div>
   </div>
 
-  <!-- SCHEDULE -->
+  <!-- ═══ ACTIVE + UPCOMING ═══ -->
   <div class="section-label" style="margin-top:20px;">Spring 2026 Schedule</div>
   <div class="projects">
 
     <!-- W03 — ACTIVE -->
-    <div class="card s-active">
+    <div class="card s-active" data-deadline="03.03.2026">
       <div class="card-header">
         <div class="card-left"><span class="week-num">WEEK 03</span><span class="card-title"><span class="ico">🛠️</span>Arrays, Lists &amp; Strings</span></div>
-        <div class="card-right">
-          <span class="status-pill active">● Open now</span>
-          <div class="deadline open">
-            <div class="dl-submit">📤 Submit: 03.03.2026</div>
-            <div class="dl-present">🎤 Present: 10.03.2026</div>
-          </div>
-        </div>
+        <div class="card-right"><span class="status-pill active">● Open</span><span class="deadline open">Due: 03.03.2026</span></div>
       </div>
       <div class="card-body">
-        <p class="card-desc">Choose <strong>one</strong> of the four projects below to complete and submit. All four notebooks are available — pick the one that best matches your level. Attempting a second project earns bonus marks.</p>
+        <p class="card-desc">
+          Four engineering projects on Week 03 material — all built around real sensor and control data.
+          Choose <strong>one</strong> project to submit, or complete more for bonus marks.
+          Each is self-contained and takes 2–3 hours at home.
+        </p>
         <div class="topics">
-          <span class="tag">sliding window</span><span class="tag">two pointers</span><span class="tag">prefix sum</span><span class="tag">frequency map</span><span class="tag">2D arrays</span><span class="tag">string formatting</span><span class="tag">pattern matching</span>
+          <span class="tag">sliding window</span><span class="tag">two pointers</span><span class="tag">prefix sum</span>
+          <span class="tag">frequency map</span><span class="tag">2D arrays</span><span class="tag">string formatting</span><span class="tag">pattern matching</span>
         </div>
         <div class="sub-grid">
-          <div class="sub"><div class="sub-num">P3.1</div><div class="sub-name">Sensor Data Cleaner</div><div class="sub-concept">sliding window · two pointers · list slicing</div><span class="diff easy">⬤ Y2 friendly</span></div>
-          <div class="sub"><div class="sub-num">P3.2</div><div class="sub-name">Robot Joint Logger</div><div class="sub-concept">2D arrays · prefix sum · string format</div><span class="diff medium">⬤ Y2 / Y3</span></div>
-          <div class="sub"><div class="sub-num">P3.3</div><div class="sub-name">PWM Signal Decoder</div><div class="sub-concept">freq. count · pattern match · list comp</div><span class="diff medium">⬤ Y2 / Y3</span></div>
-          <div class="sub"><div class="sub-num">P3.4</div><div class="sub-name">Predictive Maintenance</div><div class="sub-concept">prefix sum · sliding window · period detect</div><span class="diff hard">⬤ Y3 recommended</span></div>
+          <div class="sub">
+            <div class="sub-num">P3.1</div>
+            <div class="sub-name">Sensor Data Cleaner</div>
+            <div class="sub-concept">sliding window · two pointers · interpolation</div>
+            <span class="diff easy">⬤ Y2 friendly</span>
+          </div>
+          <div class="sub">
+            <div class="sub-num">P3.2</div>
+            <div class="sub-name">Robot Joint Logger</div>
+            <div class="sub-concept">2D arrays · prefix sum · string format</div>
+            <span class="diff medium">⬤ Y2 / Y3</span>
+          </div>
+          <div class="sub">
+            <div class="sub-num">P3.3</div>
+            <div class="sub-name">PWM Signal Decoder</div>
+            <div class="sub-concept">freq. count · pattern match · list comp</div>
+            <span class="diff medium">⬤ Y2 / Y3</span>
+          </div>
+          <div class="sub">
+            <div class="sub-num">P3.4</div>
+            <div class="sub-name">Predictive Maintenance</div>
+            <div class="sub-concept">prefix sum · sliding window · period detect</div>
+            <span class="diff hard">⬤ Y3 recommended</span>
+          </div>
         </div>
         <div class="btns">
-          <a class="btn btn-colab" href="https://colab.research.google.com/github/arifsolmaz/arifsolmaz.github.io/blob/main/dsa/projects/Week_03_P1_SensorDataCleaner.ipynb" target="_blank">▶ P3.1 Colab</a>
-          <a class="btn btn-colab" href="https://colab.research.google.com/github/arifsolmaz/arifsolmaz.github.io/blob/main/dsa/projects/Week_03_P2_RobotJointLogger.ipynb" target="_blank">▶ P3.2 Colab</a>
-          <a class="btn btn-colab" href="https://colab.research.google.com/github/arifsolmaz/arifsolmaz.github.io/blob/main/dsa/projects/Week_03_P3_PWMSignalDecoder.ipynb" target="_blank">▶ P3.3 Colab</a>
-          <a class="btn btn-colab" href="https://colab.research.google.com/github/arifsolmaz/arifsolmaz.github.io/blob/main/dsa/projects/Week_03_P4_PredictiveMaintenance.ipynb" target="_blank">▶ P3.4 Colab</a>
-          <a class="btn btn-ghost" href="https://github.com/arifsolmaz/arifsolmaz.github.io/tree/main/dsa/projects" target="_blank">↓ .ipynb files</a>
+          <a class="btn btn-dl" href="/dsa/projects/Week_03_P1_SensorDataCleaner.ipynb" download>↓ P3.1 Notebook</a>
+          <a class="btn btn-dl" href="/dsa/projects/Week_03_P2_RobotJointLogger.ipynb" download>↓ P3.2 Notebook</a>
+          <a class="btn btn-dl" href="/dsa/projects/Week_03_P3_PWMSignalDecoder.ipynb" download>↓ P3.3 Notebook</a>
+          <a class="btn btn-dl" href="/dsa/projects/Week_03_P4_PredictiveMaintenance.ipynb" download>↓ P3.4 Notebook</a>
+          <a class="btn btn-ghost" href="https://github.com/arifsolmaz/arifsolmaz.github.io/tree/main/dsa/projects" target="_blank">GitHub ↗</a>
         </div>
       </div>
     </div>
 
     <!-- W04 -->
-    <div class="card s-upcoming">
+    <div class="card s-upcoming" data-deadline="10.03.2026">
       <div class="card-header">
         <div class="card-left"><span class="week-num">WEEK 04</span><span class="card-title"><span class="ico">🔗</span>Linked Lists</span></div>
-        <div class="card-right">
-          <span class="status-pill upcoming">Upcoming</span>
-          <div class="deadline future"><div class="dl-submit">📤 Submit: 10.03.2026</div><div class="dl-present">🎤 Present: 17.03.2026</div></div>
-        </div>
+        <div class="card-right"><span class="status-pill upcoming">Upcoming</span><span class="deadline future">Due: 10.03.2026</span></div>
       </div>
       <div class="card-body">
         <p class="card-desc">Released after Week 04 lecture. Topic: singly &amp; doubly linked lists, pointer manipulation, and circular buffers for real-time sensor queuing.</p>
@@ -277,13 +326,10 @@
     </div>
 
     <!-- W05 -->
-    <div class="card s-upcoming">
+    <div class="card s-upcoming" data-deadline="17.03.2026">
       <div class="card-header">
         <div class="card-left"><span class="week-num">WEEK 05</span><span class="card-title"><span class="ico">📚</span>Stacks &amp; Queues</span></div>
-        <div class="card-right">
-          <span class="status-pill upcoming">Upcoming</span>
-          <div class="deadline future"><div class="dl-submit">📤 Submit: 17.03.2026</div><div class="dl-present">🎤 Present: 24.03.2026</div></div>
-        </div>
+        <div class="card-right"><span class="status-pill upcoming">Upcoming</span><span class="deadline future">Due: 17.03.2026</span></div>
       </div>
       <div class="card-body">
         <p class="card-desc">Released after Week 05 lecture. Topic: stacks and queues applied to task scheduling, undo/redo buffers, and event-driven control systems.</p>
@@ -293,13 +339,10 @@
     </div>
 
     <!-- W06 -->
-    <div class="card s-upcoming">
+    <div class="card s-upcoming" data-deadline="24.03.2026">
       <div class="card-header">
         <div class="card-left"><span class="week-num">WEEK 06</span><span class="card-title"><span class="ico">🗄️</span>Hash Tables &amp; Dictionaries</span></div>
-        <div class="card-right">
-          <span class="status-pill upcoming">Upcoming</span>
-          <div class="deadline future"><div class="dl-submit">📤 Submit: 24.03.2026</div><div class="dl-present">🎤 Present: 31.03.2026</div></div>
-        </div>
+        <div class="card-right"><span class="status-pill upcoming">Upcoming</span><span class="deadline future">Due: 24.03.2026</span></div>
       </div>
       <div class="card-body">
         <p class="card-desc">Released after Week 06 lecture. Topic: hash maps, collision handling, O(1) lookups for sensor ID registries and fault code databases.</p>
@@ -309,29 +352,23 @@
     </div>
 
     <!-- W07 -->
-    <div class="card s-upcoming">
+    <div class="card s-upcoming" data-deadline="31.03.2026">
       <div class="card-header">
         <div class="card-left"><span class="week-num">WEEK 07</span><span class="card-title"><span class="ico">🔍</span>Sorting &amp; Searching</span></div>
-        <div class="card-right">
-          <span class="status-pill upcoming">Upcoming</span>
-          <div class="deadline future"><div class="dl-submit">📤 Submit: 31.03.2026</div><div class="dl-present">🎤 Present: 03.04.2026</div></div>
-        </div>
+        <div class="card-right"><span class="status-pill upcoming">Upcoming</span><span class="deadline future">Due: 31.03.2026</span></div>
       </div>
       <div class="card-body">
-        <p class="card-desc">Released after Week 07 lecture. Topic: sorting algorithms, binary search — applied to ranked sensor logs and calibration tables.</p>
+        <p class="card-desc">Released after Week 07 lecture. Topic: sorting algorithms and binary search applied to ranked sensor logs and calibration lookup tables.</p>
         <div class="topics"><span class="tag">quicksort</span><span class="tag">mergesort</span><span class="tag">binary search</span><span class="tag">O(n log n)</span></div>
         <div class="btns"><span class="btn btn-off">🔒 Not yet available</span></div>
       </div>
     </div>
 
     <!-- W08 -->
-    <div class="card s-upcoming">
+    <div class="card s-upcoming" data-deadline="03.04.2026">
       <div class="card-header">
         <div class="card-left"><span class="week-num">WEEK 08</span><span class="card-title"><span class="ico">🌳</span>Trees &amp; Binary Search Trees</span></div>
-        <div class="card-right">
-          <span class="status-pill upcoming">Upcoming</span>
-          <div class="deadline future"><div class="dl-submit">📤 Submit: 03.04.2026</div><div class="dl-present">🎤 Present: 28.04.2026</div></div>
-        </div>
+        <div class="card-right"><span class="status-pill upcoming">Upcoming</span><span class="deadline future">Due: 03.04.2026</span></div>
       </div>
       <div class="card-body">
         <p class="card-desc">Released after Week 08 lecture. Topic: binary trees, BST operations, tree traversals — applied to hierarchical robot joint state trees.</p>
@@ -340,27 +377,24 @@
       </div>
     </div>
 
-  </div>
+  </div><!-- /projects -->
 
   <!-- MIDTERM BREAK -->
   <div class="break-banner">
     <div style="font-size:22px;">🏖️</div>
     <p>
-      <strong>Midterm Break — after Week 08 submission (03.04.2026)</strong>
-      Week 08 presentations move to the first session back: 28.04.2026. No new projects during the break.
+      <strong>Midterm Break — after Week 08 deadline (03.04.2026)</strong>
+      Week 09 resumes on 28.04.2026. No submissions or presentations during the break.
     </p>
   </div>
 
   <div class="projects" style="margin-top:12px; margin-bottom:8px;">
 
     <!-- W09 -->
-    <div class="card s-upcoming">
+    <div class="card s-upcoming" data-deadline="28.04.2026">
       <div class="card-header">
         <div class="card-left"><span class="week-num">WEEK 09</span><span class="card-title"><span class="ico">⚖️</span>Balanced Trees &amp; Heaps</span></div>
-        <div class="card-right">
-          <span class="status-pill upcoming">Upcoming</span>
-          <div class="deadline future"><div class="dl-submit">📤 Submit: 28.04.2026</div><div class="dl-present">🎤 Present: 05.05.2026</div></div>
-        </div>
+        <div class="card-right"><span class="status-pill upcoming">Upcoming</span><span class="deadline future">Due: 28.04.2026</span></div>
       </div>
       <div class="card-body">
         <p class="card-desc">Released after Week 09 lecture. Topic: AVL trees, heaps, priority queues — applied to real-time task prioritisation in embedded control loops.</p>
@@ -370,13 +404,10 @@
     </div>
 
     <!-- W10 -->
-    <div class="card s-upcoming">
+    <div class="card s-upcoming" data-deadline="05.05.2026">
       <div class="card-header">
         <div class="card-left"><span class="week-num">WEEK 10</span><span class="card-title"><span class="ico">🕸️</span>Graphs I — Representation &amp; Traversal</span></div>
-        <div class="card-right">
-          <span class="status-pill upcoming">Upcoming</span>
-          <div class="deadline future"><div class="dl-submit">📤 Submit: 05.05.2026</div><div class="dl-present">🎤 Present: 12.05.2026</div></div>
-        </div>
+        <div class="card-right"><span class="status-pill upcoming">Upcoming</span><span class="deadline future">Due: 05.05.2026</span></div>
       </div>
       <div class="card-body">
         <p class="card-desc">Released after Week 10 lecture. Topic: graph representations, BFS, DFS — applied to robot path planning on grid maps.</p>
@@ -386,13 +417,10 @@
     </div>
 
     <!-- W11 -->
-    <div class="card s-upcoming">
+    <div class="card s-upcoming" data-deadline="12.05.2026">
       <div class="card-header">
         <div class="card-left"><span class="week-num">WEEK 11</span><span class="card-title"><span class="ico">🗺️</span>Graphs II — Shortest Paths</span></div>
-        <div class="card-right">
-          <span class="status-pill upcoming">Upcoming</span>
-          <div class="deadline future"><div class="dl-submit">📤 Submit: 12.05.2026</div><div class="dl-present">🎤 Present: 19.05.2026</div></div>
-        </div>
+        <div class="card-right"><span class="status-pill upcoming">Upcoming</span><span class="deadline future">Due: 12.05.2026</span></div>
       </div>
       <div class="card-body">
         <p class="card-desc">Released after Week 11 lecture. Topic: Dijkstra's algorithm, weighted graphs — applied to optimal routing for autonomous mobile robots.</p>
@@ -402,13 +430,10 @@
     </div>
 
     <!-- W12 -->
-    <div class="card s-upcoming">
+    <div class="card s-upcoming" data-deadline="19.05.2026">
       <div class="card-header">
         <div class="card-left"><span class="week-num">WEEK 12</span><span class="card-title"><span class="ico">💡</span>Dynamic Programming</span></div>
-        <div class="card-right">
-          <span class="status-pill upcoming">Upcoming</span>
-          <div class="deadline future"><div class="dl-submit">📤 Submit: 19.05.2026</div><div class="dl-present">🎤 Present: 02.06.2026</div></div>
-        </div>
+        <div class="card-right"><span class="status-pill upcoming">Upcoming</span><span class="deadline future">Due: 19.05.2026</span></div>
       </div>
       <div class="card-body">
         <p class="card-desc">Released after Week 12 lecture. Topic: memoisation, tabulation, overlapping subproblems — applied to energy-optimal trajectory planning.</p>
@@ -418,13 +443,10 @@
     </div>
 
     <!-- W13 -->
-    <div class="card s-upcoming">
+    <div class="card s-upcoming" data-deadline="02.06.2026">
       <div class="card-header">
         <div class="card-left"><span class="week-num">WEEK 13</span><span class="card-title"><span class="ico">🧩</span>Greedy Algorithms</span></div>
-        <div class="card-right">
-          <span class="status-pill upcoming">Upcoming</span>
-          <div class="deadline future"><div class="dl-submit">📤 Submit: 02.06.2026</div><div class="dl-present">🎤 Present: 05.06.2026</div></div>
-        </div>
+        <div class="card-right"><span class="status-pill upcoming">Upcoming</span><span class="deadline future">Due: 02.06.2026</span></div>
       </div>
       <div class="card-body">
         <p class="card-desc">Released after Week 13 lecture. Topic: greedy strategies, interval scheduling, Huffman coding — applied to sensor data compression and task assignment.</p>
@@ -433,17 +455,14 @@
       </div>
     </div>
 
-    <!-- W14 — LAST WEEK -->
-    <div class="card s-upcoming">
+    <!-- W14 -->
+    <div class="card s-upcoming" data-deadline="05.06.2026">
       <div class="card-header">
         <div class="card-left"><span class="week-num">WEEK 14</span><span class="card-title"><span class="ico">🏁</span>Review &amp; Final Project</span></div>
-        <div class="card-right">
-          <span class="status-pill last">⚠ Last week</span>
-          <div class="deadline final">📤 Submit + 🎤 Present: 05.06.2026</div>
-        </div>
+        <div class="card-right"><span class="status-pill last">⚠ Last week</span><span class="deadline final">Due: 05.06.2026</span></div>
       </div>
       <div class="card-body">
-        <p class="card-desc">Final project released after Week 14 lecture. Combines multiple topics from the semester into one engineering pipeline. Submission and live presentation are on the same day. <strong style="color:var(--red);">Hard deadline — no extensions.</strong></p>
+        <p class="card-desc">Final project released after Week 14 lecture. Integrates multiple topics from the semester into one engineering pipeline. <strong style="color:var(--red);">Hard deadline — no extensions under any circumstances.</strong></p>
         <div class="topics"><span class="tag">integration</span><span class="tag">full pipeline</span><span class="tag">all topics</span></div>
         <div class="btns"><span class="btn btn-off">🔒 Not yet available</span></div>
       </div>
@@ -452,67 +471,63 @@
   </div>
 
   <!-- HOW IT WORKS -->
-  <div class="section-label" style="margin-top:32px;">How it works</div>
+  <div class="section-label" style="margin-top:36px;">How it works</div>
   <div class="howto">
-    <h2>📋 Workflow &amp; submission guide</h2>
+    <h2>📋 Instructions</h2>
     <div class="steps">
 
       <div class="step">
-        <div class="step-left"><div class="sn blue">1</div><div class="step-line"></div></div>
-        <div class="sb">
-          <strong>Open the notebook</strong>
-          <p>Click an "Open in Colab" button above to open the notebook directly in Google Colab — no download needed. Alternatively, download the <code>.ipynb</code> file and open it in VS Code or Jupyter locally.</p>
+        <div class="step-left"><div class="sn">1</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <strong>Download the notebook</strong>
+          <p>Click one of the <strong>↓ Notebook</strong> buttons above. Open the <code>.ipynb</code> file in Jupyter, VS Code, or Google Colab — your choice. The setup cell generates the data automatically; just run it once and start coding.</p>
         </div>
       </div>
 
       <div class="step">
-        <div class="step-left"><div class="sn orange">2</div><div class="step-line"></div></div>
-        <div class="sb">
-          <strong>Read the project brief carefully</strong>
-          <p>Each notebook starts with a scenario description, an input/output table, and conceptual background. Read this before writing any code — understanding the problem is half the solution.</p>
+        <div class="step-left"><div class="sn">2</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <strong>Read the project carefully</strong>
+          <p>Each exercise starts with a <strong>📘 Background</strong> section explaining the DSA concept, followed by a clear problem statement and tiered <strong>💡 Hints</strong>. Read everything before writing a single line of code. If something is still unclear after reading the hints, ask on the course forum — not the day before the deadline.</p>
         </div>
       </div>
 
       <div class="step">
-        <div class="step-left"><div class="sn orange">3</div><div class="step-line"></div></div>
-        <div class="sb">
-          <strong>Run the Setup cell first</strong>
-          <p>The first code cell generates the dataset with a fixed <code>random.seed</code>. Everyone in the class gets the exact same data — this makes it possible to compare solutions and spot mistakes during the presentation.</p>
+        <div class="step-left"><div class="sn">3</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <strong>Complete the four exercises</strong>
+          <p>Each notebook has exactly 4 exercises, each building on the previous one. Fill in the <code>pass</code> placeholder in each function, then uncomment and run the test lines below it to check your output. A <strong>🚀 Stretch Goal</strong> is included at the end if you want to go further.</p>
         </div>
       </div>
 
       <div class="step">
-        <div class="step-left"><div class="sn orange">4</div><div class="step-line"></div></div>
-        <div class="sb">
-          <strong>Complete all four exercises</strong>
-          <p>Each notebook has 4 exercises. Every exercise includes background theory, a precise task description, and tiered hints. Use them — they are there to guide you, not to spoil the problem. Uncomment the test lines at the bottom of each cell to check your output.</p>
+        <div class="step-left"><div class="sn">4</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <strong>Submit on <span class="pill bb">Blackboard</span> before the deadline</strong>
+          <p>Upload your completed <code>.ipynb</code> file to the Blackboard assignment for that week. Make sure all cells have been run and their outputs are visible — a notebook with no output will not be graded. Resubmission is allowed before the deadline; only the last upload counts.</p>
         </div>
       </div>
 
       <div class="step">
-        <div class="step-left"><div class="sn red">5</div><div class="step-line"></div></div>
-        <div class="sb">
-          <strong>Submit via Blackboard before the deadline</strong>
-          <p>Download your completed notebook as a <code>.ipynb</code> file (<em>File → Download → Download .ipynb</em> in Colab) and upload it to the corresponding assignment on Blackboard. Make sure all cells have been run and outputs are visible in the file before submitting.</p>
+        <div class="step-left"><div class="sn">5</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <strong>Present live <span class="pill prs">next class</span> — the day after the deadline</strong>
+          <p>The presentation session is always held the day after the deadline, in class. You will be called to share your screen and walk through your solution. You must be able to explain every function you wrote — what it does, why you chose that approach, and what the output means. Students who cannot explain their code will receive zero, regardless of whether the code runs correctly.</p>
         </div>
       </div>
 
       <div class="step">
-        <div class="step-left"><div class="sn purple">6</div><div class="step-line"></div></div>
-        <div class="sb">
-          <strong>Present live in the next class</strong>
-          <p>On presentation day, you will be asked to open your notebook and walk through your solution — explaining what each function does, why you chose that approach, and what the output means. You may be asked to modify a small part on the spot. Presentations are short (3–5 min) but must show genuine understanding.</p>
+        <div class="step-left"><div class="sn">6</div></div>
+        <div class="step-body" style="padding-bottom:0;">
+          <strong><span class="pill ai">AI tools</span> are allowed</strong>
+          <p>You may use Claude, ChatGPT, Copilot, or any other AI assistant. The hints in the notebooks are intentionally generous. However: using AI without understanding what it produces is a risk — the live presentation will immediately reveal it. Use AI to learn, not to skip learning.</p>
         </div>
       </div>
 
-    </div>
-
-    <div class="ai-note">
-      <p>🤖 <strong>AI tools are allowed.</strong> Claude, Copilot, ChatGPT — use whatever helps you learn. However: during the live presentation, you must be able to explain every function and every line in your notebook. If you cannot explain code you submitted, it counts as zero regardless of correctness. The goal is understanding, not output.</p>
     </div>
   </div>
 
-</div>
+</div><!-- /wrap -->
 
 <footer>
   <div class="footer-inner">
@@ -531,6 +546,29 @@
       ? '▼   Hide earlier weeks (W01 – W02)'
       : '▶   Show earlier weeks (W01 – W02)';
   }
+
+  // Auto-inject presentation date (deadline + 1 day) into every card that has one
+  function nextDay(ddmmyyyy) {
+    const [dd, mm, yyyy] = ddmmyyyy.split('.').map(Number);
+    const d = new Date(yyyy, mm - 1, dd);
+    d.setDate(d.getDate() + 1);
+    const pd = String(d.getDate()).padStart(2, '0');
+    const pm = String(d.getMonth() + 1).padStart(2, '0');
+    return `${pd}.${pm}.${d.getFullYear()}`;
+  }
+
+  // Only inject presentation note into open (active) cards
+  document.querySelectorAll('.card.s-active[data-deadline]').forEach(card => {
+    const body = card.querySelector('.card-body');
+    if (!body) return;
+    const deadline = card.dataset.deadline;
+    const presentDate = nextDay(deadline);
+    const note = document.createElement('div');
+    note.className = 'present-note';
+    note.innerHTML = `📅 &nbsp;Presentations: <strong style="margin-left:4px;">${presentDate} · in class</strong> &nbsp;—&nbsp; be ready to walk through your code and answer questions.`;
+    const topics = body.querySelector('.topics');
+    body.insertBefore(note, topics);
+  });
 </script>
 </body>
 </html>
