@@ -394,7 +394,7 @@
     </div>
     <div class="sched-tile break-tile">
       <span style="font-size:20px;">🏖️</span>
-      <span class="break-text">MIDTERM BREAK &nbsp;·&nbsp; 06.04.2026 → 17.04.2026<br>No submissions or presentations · W09 resumes 20.04.2026</span>
+      <span class="break-text">MIDTERM BREAK &nbsp;·&nbsp; 06.04.2026 → 19.04.2026<br>No submissions or presentations · W09 resumes 22.04.2026</span>
     </div>
     <div class="sched-tile" data-deadline="28.04.2026" data-notebooks="Week_09_P1_FactoryFloorNetwork,Week_09_P2_RobotTaskScheduler,Week_09_P3_SensorNetworkAnalysis,Week_09_P4_WeightedRobotPathPlanner">
       <div class="sched-week">WEEK 09</div>
@@ -1168,7 +1168,7 @@
   <div class="projects" style="margin-top:12px; margin-bottom:8px;">
 
     <!-- W09 — UPCOMING -->
-    <div class="card s-upcoming" data-deadline="28.04.2026" data-notebooks="Week_09_P1_FactoryFloorNetwork,Week_09_P2_RobotTaskScheduler,Week_09_P3_SensorNetworkAnalysis,Week_09_P4_WeightedRobotPathPlanner">
+    <div class="card s-upcoming" data-deadline="28.04.2026" data-opens="22.04.2026" data-notebooks="Week_09_P1_FactoryFloorNetwork,Week_09_P2_RobotTaskScheduler,Week_09_P3_SensorNetworkAnalysis,Week_09_P4_WeightedRobotPathPlanner">
       <div class="card-header">
         <div class="card-left"><span class="week-num">WEEK 09</span><span class="card-title"><span class="ico">🕸️</span>Graphs — Traversal, Scheduling &amp; Path Planning</span></div>
         <div class="card-right"><span class="status-pill upcoming">Upcoming</span><span class="deadline future">Due: 28.04.2026</span></div>
@@ -1992,8 +1992,12 @@
     const cards = [...document.querySelectorAll('.card[data-deadline]')];
     cards.sort((a,b) => parseDate(a.dataset.deadline) - parseDate(b.dataset.deadline));
 
-    // activeIdx = first card whose deadline is today or in the future
-    const activeIdx = cards.findIndex(c => parseDate(c.dataset.deadline) >= now);
+    // activeIdx = first card whose deadline is today or in the future AND opens date has passed
+    const activeIdx = cards.findIndex(c => {
+      const deadlineOk = parseDate(c.dataset.deadline) >= now;
+      const opensOk = c.dataset.opens ? parseDate(c.dataset.opens) <= now : true;
+      return deadlineOk && opensOk;
+    });
     // -1 means all deadlines passed (end of semester)
 
     let activeDeadline = activeIdx >= 0 ? parseDate(cards[activeIdx].dataset.deadline) : null;
@@ -2096,7 +2100,8 @@
         // Upcoming — lock
         const sp = document.createElement('span');
         sp.className   = 'btn btn-off';
-        sp.textContent = '\uD83D\uDD12 Opens when Week ' + weekNum + ' is active';
+        const opensLabel = card.dataset.opens ? card.dataset.opens : 'Week ' + weekNum + ' active';
+        sp.textContent = '\uD83D\uDD12 Opens ' + opensLabel;
         btnsDiv.appendChild(sp);
       }
     });
